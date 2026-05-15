@@ -1,0 +1,85 @@
+{
+  "entities": {
+    "Opportunity": {
+      "title": "Job or Training Opportunity",
+      "description": "Details about a local hiring or training opportunity.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "companyName": { "type": "string" },
+        "type": { "type": "string", "enum": ["job", "internship", "training"] },
+        "location": {
+          "type": "object",
+          "properties": {
+            "lat": { "type": "number" },
+            "lng": { "type": "number" },
+            "address": { "type": "string" }
+          },
+          "required": ["lat", "lng"]
+        },
+        "description": { "type": "string" },
+        "contact": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["title", "companyName", "type", "location"]
+    },
+    "LearningResource": {
+      "title": "Learning Resource",
+      "description": "Curated skill-building content.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "category": { "type": "string", "enum": ["Tech", "Agriculture", "Trade", "Business"] },
+        "videoUrl": { "type": "string" },
+        "externalUrl": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["title", "category"]
+    },
+    "UserProfile": {
+      "title": "User Profile",
+      "description": "Storage for user specific progress and favorites.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "favorites": { "type": "array", "items": { "type": "string" } },
+        "completedResources": { "type": "array", "items": { "type": "string" } },
+        "appliedJobs": { "type": "array", "items": { "type": "string" } }
+      },
+      "required": ["uid", "email"]
+    },
+    "Application": {
+      "title": "Job Application",
+      "description": "A record of a user applying for an opportunity.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "opportunityId": { "type": "string" },
+        "status": { "type": "string", "enum": ["pending", "reviewed", "accepted", "rejected"] },
+        "appliedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "opportunityId", "status", "appliedAt"]
+    }
+  },
+  "firestore": {
+    "opportunities": {
+      "schema": "Opportunity",
+      "description": "List of available job and training opportunities in Ghana."
+    },
+    "learningResources": {
+      "schema": "LearningResource",
+      "description": "Curated educational resources for the youth."
+    },
+    "users": {
+      "schema": "UserProfile",
+      "description": "User profiles and their activity tracking."
+    },
+    "applications": {
+      "schema": "Application",
+      "description": "User applications for specific opportunities."
+    }
+  }
+}

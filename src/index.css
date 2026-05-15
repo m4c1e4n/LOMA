@@ -1,0 +1,14 @@
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+@theme {
+  --color-brand-blue: #1e3a8a;
+  --color-brand-green: #065f46;
+  --color-brand-light: #f8fafc;
+}
+
+@layer base {
+  body {
+    @apply bg-brand-light text-slate-900 font-sans;
+  }
+}

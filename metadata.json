@@ -1,0 +1,6 @@
+{
+  "name": "LOMA - Local Opportunities Map App",
+  "description": "A platform for unemployed youth in Ghana to find local job opportunities, internships, and skill-building resources via an interactive map.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": []
+}
